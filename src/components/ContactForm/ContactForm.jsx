@@ -4,8 +4,8 @@ import { Button } from './ContactForm.styled';
 import { StyledForm, FormInput, Label, ErrorText } from './ContactForm.styled';
 import { ValidationSchema } from './Validation';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts } from 'redux/selectors';
-import { addContact } from 'redux/operations';
+import { selectContacts } from 'redux/contacts/selectors';
+import { addContact } from 'redux/contacts/operations';
 
 export const ContactForm = () => {
   const INITIAL_VALUES = {

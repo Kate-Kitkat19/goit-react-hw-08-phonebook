@@ -1,6 +1,7 @@
 import { ContactCard } from '../ContactCard/ContactCard';
 import { List, ListItem } from './Contacts.styled';
-import { selectContacts, selectFilter } from 'redux/selectors';
+import { selectFilter } from 'redux/filter/selectors';
+import { selectContacts } from 'redux/contacts/selectors';
 import { useSelector } from 'react-redux';
 
 export const Contacts = () => {

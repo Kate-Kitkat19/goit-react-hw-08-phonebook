@@ -1,6 +1,6 @@
 import { PropTypes } from 'prop-types';
 import { Card, Button, Text, Wrapper } from './ContactCard.styled';
-import { deleteContact } from 'redux/operations';
+import { deleteContact } from 'redux/contacts/operations';
 import { useDispatch } from 'react-redux';
 
 export const ContactCard = ({ name, phone, id }) => {
