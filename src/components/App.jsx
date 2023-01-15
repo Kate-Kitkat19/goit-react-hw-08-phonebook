@@ -1,7 +1,7 @@
 import React, { useEffect, lazy } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
-import { useAuth } from 'hooks';
+import { useAuth } from 'hooks/useAuth';
 
 import { Layout } from './Layout/Layout';
 

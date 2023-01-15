@@ -1,7 +1,7 @@
-import ContactForm from './ContactForm/ContactForm';
+import ContactForm from 'components/ContactForm/ContactForm';
 import { Contacts } from 'components/Contacts/Contacts';
-import { Filter } from './Filter/Filter';
-import { Title } from './Contacts/Contacts.styled';
+import { Filter } from 'components/Filter/Filter';
+import { Title } from 'components/Contacts/Contacts.styled';
 import {
   selectError,
   selectIsLoading,
