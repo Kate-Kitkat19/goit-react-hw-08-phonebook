@@ -16,10 +16,10 @@ export const Contacts = () => {
 
   return (
     <List>
-      {visibleContacts.map(({ name, phone, id }) => {
+      {visibleContacts.map(({ name, number, id }) => {
         return (
           <ListItem key={id}>
-            <ContactCard name={name} phone={phone} id={id} />
+            <ContactCard name={name} number={number} id={id} />
           </ListItem>
         );
       })}

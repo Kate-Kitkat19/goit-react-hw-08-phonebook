@@ -6,25 +6,30 @@ import { ValidationSchema } from './Validation';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/contacts/selectors';
 import { addContact } from 'redux/contacts/operations';
+import { toast } from 'react-toastify';
 
 export const ContactForm = () => {
   const INITIAL_VALUES = {
     name: '',
-    phone: '',
+    number: '',
   };
 
   const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
   const handleSubmit = (values, { resetForm }) => {
+    console.log('handleSubmit   values', values);
     const contactName = values.name.toLowerCase();
+
     const isSaved = contacts.find(
       contact => contact.name.toLowerCase() === contactName
     );
     if (isSaved) {
       alert(`${values.name} is already in contacts`);
     } else {
-      dispatch(addContact(values));
+      dispatch(addContact({ name: values.name, number: values.number })).then(
+        toast.success('Contact has been added')
+      );
     }
     resetForm();
   };
@@ -43,8 +48,8 @@ export const ContactForm = () => {
         </Label>
         <Label>
           Please write the phone number
-          <FormInput type="tel" name="phone"></FormInput>
-          <ErrorMessage name="phone" component={ErrorText}></ErrorMessage>
+          <FormInput type="tel" name="number"></FormInput>
+          <ErrorMessage name="number" component={ErrorText}></ErrorMessage>
         </Label>
         <Button type="submit">Add contact</Button>
       </StyledForm>

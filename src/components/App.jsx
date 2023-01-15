@@ -1,49 +1,55 @@
-import React, { useEffect, lazy } from 'react';
+import React, { lazy } from 'react';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import { useAuth } from 'hooks/useAuth';
-
+import { refreshUser } from 'redux/auth/operations';
 import { Layout } from './Layout/Layout';
 import { NotFound } from './NotFound/NotFound';
 import { RestrictedRoute } from './RestrictedRoute';
-import { refreshUser } from 'redux/auth/operations';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const RegisterPage = lazy(() => import('./RegisterForm/RegisterForm'));
+const RegisterForm = lazy(() => import('./RegisterForm/RegisterForm'));
 const LoginPage = lazy(() => import('./LoginForm/LoginForm'));
 const HomePage = lazy(() => import('./HomePage/HomePage'));
 
 export const App = () => {
+  const { isRefreshing } = useAuth();
+
   const dispatch = useDispatch();
-  // const { isRefreshing } = useAuth();
 
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  const isLoggedIn = useAuth();
+  const { isLoggedIn } = useAuth();
+  console.log(isLoggedIn);
 
   return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={isLoggedIn ? <HomePage /> : <LoginPage />} />
+    !isRefreshing && (
+      <>
+        <ToastContainer autoClose={2500}></ToastContainer>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={isLoggedIn ? <HomePage /> : <LoginPage />} />
 
-        <Route
-          path="register"
-          element={
-            <RestrictedRoute
-              redirectTo="contacts"
-              component={<RegisterPage />}
+            <Route
+              path="register"
+              element={
+                <RestrictedRoute redirectTo="/" component={<RegisterForm />} />
+              }
             />
-          }
-        />
-        <Route
-          path="login"
-          element={
-            <RestrictedRoute redirectTo="contacts" component={<LoginPage />} />
-          }
-        />
-      </Route>
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+            <Route
+              path="login"
+              element={
+                <RestrictedRoute redirectTo="/" component={<LoginPage />} />
+              }
+            />
+          </Route>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </>
+    )
   );
 };
