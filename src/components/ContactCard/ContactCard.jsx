@@ -3,6 +3,7 @@ import { Card, Button, Text, Wrapper } from './ContactCard.styled';
 import { deleteContact } from 'redux/contacts/operations';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
+import { DeleteIcon } from '@chakra-ui/icons';
 
 export const ContactCard = ({ name, number, id }) => {
   const dispatch = useDispatch();
@@ -18,7 +19,7 @@ export const ContactCard = ({ name, number, id }) => {
         <Text>{number}</Text>
       </Wrapper>
       <Button type="button" onClick={() => deleteItem(id)}>
-        Delete contact
+        Delete contact <DeleteIcon />
       </Button>
     </Card>
   );

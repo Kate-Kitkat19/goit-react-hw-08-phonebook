@@ -1,26 +1,28 @@
-import { Formik, ErrorMessage } from 'formik';
+import { Formik, ErrorMessage, Field, Form } from 'formik';
 import React from 'react';
-import { Button } from './ContactForm.styled';
-import { StyledForm, FormInput, Label, ErrorText } from './ContactForm.styled';
+// import { Button } from './ContactForm.styled';
+import { ErrorText, Button } from './ContactForm.styled';
 import { ValidationSchema } from './Validation';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/contacts/selectors';
 import { addContact } from 'redux/contacts/operations';
 import { toast } from 'react-toastify';
+import { Icon } from '@chakra-ui/react';
+
+import { Input, VStack, InputGroup, InputLeftElement } from '@chakra-ui/react';
+import { PhoneIcon } from '@chakra-ui/icons';
+import { ImUser } from 'react-icons/im';
 
 export const ContactForm = () => {
+  const contacts = useSelector(selectContacts);
+  const dispatch = useDispatch();
   const INITIAL_VALUES = {
     name: '',
     number: '',
   };
 
-  const contacts = useSelector(selectContacts);
-  const dispatch = useDispatch();
-
   const handleSubmit = (values, { resetForm }) => {
-    console.log('handleSubmit   values', values);
     const contactName = values.name.toLowerCase();
-
     const isSaved = contacts.find(
       contact => contact.name.toLowerCase() === contactName
     );
@@ -40,19 +42,42 @@ export const ContactForm = () => {
       validationSchema={ValidationSchema}
       initialValues={{ ...INITIAL_VALUES }}
     >
-      <StyledForm>
-        <Label>
-          Please write the name
-          <FormInput type="text" name="name"></FormInput>
-          <ErrorMessage name="name" component={ErrorText}></ErrorMessage>
-        </Label>
-        <Label>
-          Please write the phone number
-          <FormInput type="tel" name="number"></FormInput>
-          <ErrorMessage name="number" component={ErrorText}></ErrorMessage>
-        </Label>
-        <Button type="submit">Add contact</Button>
-      </StyledForm>
+      <Form>
+        <VStack spacing={4} align="flex-start">
+          <InputGroup>
+            <InputLeftElement
+              pointerEvents="none"
+              children={<Icon as={ImUser} color="gray.300" />}
+            />
+            <Field
+              as={Input}
+              type="text"
+              name="name"
+              placeholder="Name"
+              width="auto"
+            ></Field>
+            <ErrorMessage name="name" component={ErrorText}></ErrorMessage>
+          </InputGroup>
+          <InputGroup>
+            <InputLeftElement
+              pointerEvents="none"
+              children={<PhoneIcon color="gray.300" />}
+            />
+            <Field
+              as={Input}
+              type="tel"
+              name="number"
+              placeholder="Phone number"
+              width="auto"
+            ></Field>
+            <ErrorMessage name="number" component={ErrorText}></ErrorMessage>
+          </InputGroup>
+
+          <Button type="submit" aria-label="Add contact">
+            Submit
+          </Button>
+        </VStack>
+      </Form>
     </Formik>
   );
 };

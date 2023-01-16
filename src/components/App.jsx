@@ -9,6 +9,7 @@ import { NotFound } from './NotFound/NotFound';
 import { RestrictedRoute } from './RestrictedRoute';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { ChakraProvider } from '@chakra-ui/react';
 
 const RegisterForm = lazy(() => import('./RegisterForm/RegisterForm'));
 const LoginPage = lazy(() => import('./LoginForm/LoginForm'));
@@ -28,7 +29,7 @@ export const App = () => {
 
   return (
     !isRefreshing && (
-      <>
+      <ChakraProvider>
         <ToastContainer autoClose={2500}></ToastContainer>
         <Routes>
           <Route path="/" element={<Layout />}>
@@ -49,7 +50,7 @@ export const App = () => {
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </>
+      </ChakraProvider>
     )
   );
 };

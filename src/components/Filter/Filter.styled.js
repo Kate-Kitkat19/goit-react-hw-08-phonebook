@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+
 export const StyledFilter = styled.input`
   font: inherit;
   letter-spacing: inherit;
