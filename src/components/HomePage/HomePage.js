@@ -1,7 +1,7 @@
 import ContactForm from 'components/ContactForm/ContactForm';
 import { Contacts } from 'components/Contacts/Contacts';
 import { Filter } from 'components/Filter/Filter';
-import { Title } from 'components/Contacts/Contacts.styled';
+
 import {
   selectError,
   selectIsLoading,
@@ -25,7 +25,7 @@ const HomePage = () => {
     <>
       <ContactForm></ContactForm>
       <Filter></Filter>
-      {contactList.length > 0 && <Title>Contacts</Title>}
+      {contactList.length > 0 && <h2>Contacts</h2>}
       {isLoading && !error && <b>Loading...</b>}
       <Contacts></Contacts>
     </>

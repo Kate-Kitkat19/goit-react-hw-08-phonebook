@@ -7,9 +7,7 @@ import { refreshUser } from 'redux/auth/operations';
 import { Layout } from './Layout/Layout';
 import { NotFound } from './NotFound/NotFound';
 import { RestrictedRoute } from './RestrictedRoute';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { ChakraProvider } from '@chakra-ui/react';
+import { ChakraProvider, theme, ColorModeProvider } from '@chakra-ui/react';
 
 const RegisterForm = lazy(() => import('./RegisterForm/RegisterForm'));
 const LoginPage = lazy(() => import('./LoginForm/LoginForm'));
@@ -29,27 +27,34 @@ export const App = () => {
 
   return (
     !isRefreshing && (
-      <ChakraProvider>
-        <ToastContainer autoClose={2500}></ToastContainer>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={isLoggedIn ? <HomePage /> : <LoginPage />} />
+      <ChakraProvider theme={theme}>
+        <ColorModeProvider>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route
+                index
+                element={isLoggedIn ? <HomePage /> : <LoginPage />}
+              />
 
-            <Route
-              path="register"
-              element={
-                <RestrictedRoute redirectTo="/" component={<RegisterForm />} />
-              }
-            />
-            <Route
-              path="login"
-              element={
-                <RestrictedRoute redirectTo="/" component={<LoginPage />} />
-              }
-            />
-          </Route>
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+              <Route
+                path="register"
+                element={
+                  <RestrictedRoute
+                    redirectTo="/"
+                    component={<RegisterForm />}
+                  />
+                }
+              />
+              <Route
+                path="login"
+                element={
+                  <RestrictedRoute redirectTo="/" component={<LoginPage />} />
+                }
+              />
+            </Route>
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </ColorModeProvider>
       </ChakraProvider>
     )
   );

@@ -1,4 +1,4 @@
-// import { StyledFilter, StyledLabel } from './Filter.styled';
+
 import { useDispatch } from 'react-redux';
 import { updateFilter } from 'redux/filter/filtersSlice';
 import { Input } from '@chakra-ui/react';

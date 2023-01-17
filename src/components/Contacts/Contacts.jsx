@@ -1,5 +1,4 @@
 import { ContactCard } from '../ContactCard/ContactCard';
-import { List, ListItem } from './Contacts.styled';
 import { selectFilter } from 'redux/filter/selectors';
 import { selectContacts } from 'redux/contacts/selectors';
 import { useSelector } from 'react-redux';
@@ -15,14 +14,14 @@ export const Contacts = () => {
     : contactList;
 
   return (
-    <List>
+    <ul>
       {visibleContacts.map(({ name, number, id }) => {
         return (
-          <ListItem key={id}>
+          <li key={id}>
             <ContactCard name={name} number={number} id={id} />
-          </ListItem>
+          </li>
         );
       })}
-    </List>
+    </ul>
   );
 };

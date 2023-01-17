@@ -1,13 +1,13 @@
 import { Formik, ErrorMessage, Field, Form } from 'formik';
 import React from 'react';
-// import { Button } from './ContactForm.styled';
-import { ErrorText, Button } from './ContactForm.styled';
+
 import { ValidationSchema } from './Validation';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/contacts/selectors';
 import { addContact } from 'redux/contacts/operations';
 import { toast } from 'react-toastify';
 import { Icon } from '@chakra-ui/react';
+import { Alert } from '@chakra-ui/react';
 
 import { Input, VStack, InputGroup, InputLeftElement } from '@chakra-ui/react';
 import { PhoneIcon } from '@chakra-ui/icons';
@@ -29,9 +29,7 @@ export const ContactForm = () => {
     if (isSaved) {
       alert(`${values.name} is already in contacts`);
     } else {
-      dispatch(addContact({ name: values.name, number: values.number })).then(
-        toast.success('Contact has been added')
-      );
+      dispatch(addContact({ name: values.name, number: values.number }))
     }
     resetForm();
   };
@@ -56,7 +54,7 @@ export const ContactForm = () => {
               placeholder="Name"
               width="auto"
             ></Field>
-            <ErrorMessage name="name" component={ErrorText}></ErrorMessage>
+            <ErrorMessage as={Alert} status="error" name="name"></ErrorMessage>
           </InputGroup>
           <InputGroup>
             <InputLeftElement
@@ -70,12 +68,12 @@ export const ContactForm = () => {
               placeholder="Phone number"
               width="auto"
             ></Field>
-            <ErrorMessage name="number" component={ErrorText}></ErrorMessage>
+            <ErrorMessage as={Alert} status="error" name="number"></ErrorMessage>
           </InputGroup>
 
-          <Button type="submit" aria-label="Add contact">
+          <button type="submit" aria-label="Add contact">
             Submit
-          </Button>
+          </button>
         </VStack>
       </Form>
     </Formik>

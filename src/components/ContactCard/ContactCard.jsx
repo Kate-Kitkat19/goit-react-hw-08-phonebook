@@ -1,27 +1,26 @@
 import { PropTypes } from 'prop-types';
-import { Card, Button, Text, Wrapper } from './ContactCard.styled';
 import { deleteContact } from 'redux/contacts/operations';
 import { useDispatch } from 'react-redux';
-import { toast } from 'react-toastify';
+
+
 import { DeleteIcon } from '@chakra-ui/icons';
 
 export const ContactCard = ({ name, number, id }) => {
   const dispatch = useDispatch();
-
   function deleteItem(id) {
-    dispatch(deleteContact(id)).then(toast.success('Contact has been deleted'));
+    dispatch(deleteContact(id))
   }
 
   return (
-    <Card>
-      <Wrapper>
-        <Text>{name}</Text>
-        <Text>{number}</Text>
-      </Wrapper>
-      <Button type="button" onClick={() => deleteItem(id)}>
+    <div>
+      <div>
+        <span>{name}</span>
+        <span>{number}</span>
+      </div>
+      <button type="button" onClick={() => deleteItem(id)}>
         Delete contact <DeleteIcon />
-      </Button>
-    </Card>
+      </button>
+    </div>
   );
 };
 
