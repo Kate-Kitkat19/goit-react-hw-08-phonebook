@@ -10,11 +10,18 @@ import {
   Button,
   Container,
   FormLabel,
+  InputRightAddon,
+  IconButton,
+  InputGroup,
 } from '@chakra-ui/react';
+import { useState } from 'react';
+import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
   const toast = useToast();
+  const [show, setShow] = useState(false);
+  const handleClick = () => setShow(!show);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -63,12 +70,22 @@ const RegisterForm = () => {
             </FormLabel>
             <FormLabel marginTop={2}>
               Password
-              <Input
-                type="password"
-                name="password"
-                variant="flushed"
-                size="md"
-              />
+              <InputGroup width="100%">
+                <Input
+                  type={show ? 'text' : 'password'}
+                  name="password"
+                  variant="flushed"
+                  size="md"
+                />
+                <InputRightAddon>
+                  <IconButton
+                    aria-label="Toggle password visibility"
+                    icon={show ? <ViewIcon /> : <ViewOffIcon />}
+                    onClick={handleClick}
+                    _hover="none"
+                  ></IconButton>
+                </InputRightAddon>
+              </InputGroup>
             </FormLabel>
             <Center w="100%" py="3">
               <Button type="submit">Register</Button>

@@ -8,7 +8,13 @@ import { addContact } from 'redux/contacts/operations';
 import { Icon } from '@chakra-ui/react';
 import { Alert } from '@chakra-ui/react';
 
-import { Input, VStack, InputGroup, InputLeftElement } from '@chakra-ui/react';
+import {
+  Input,
+  VStack,
+  InputGroup,
+  InputLeftElement,
+  Button,
+} from '@chakra-ui/react';
 import { PhoneIcon } from '@chakra-ui/icons';
 import { ImUser } from 'react-icons/im';
 
@@ -28,7 +34,7 @@ export const ContactForm = () => {
     if (isSaved) {
       alert(`${values.name} is already in contacts`);
     } else {
-      dispatch(addContact({ name: values.name, number: values.number }))
+      dispatch(addContact({ name: values.name, number: values.number }));
     }
     resetForm();
   };
@@ -40,7 +46,7 @@ export const ContactForm = () => {
       initialValues={{ ...INITIAL_VALUES }}
     >
       <Form>
-        <VStack spacing={4} align="flex-start">
+        <VStack spacing={4}>
           <InputGroup>
             <InputLeftElement
               pointerEvents="none"
@@ -67,12 +73,17 @@ export const ContactForm = () => {
               placeholder="Phone number"
               width="auto"
             ></Field>
-            <ErrorMessage as={Alert} status="error" name="number"></ErrorMessage>
+            <ErrorMessage status="error" name="number"></ErrorMessage>
           </InputGroup>
 
-          <button type="submit" aria-label="Add contact">
+          <Button
+            type="submit"
+            aria-label="Add contact"
+            size="lg"
+            colorScheme="green"
+          >
             Submit
-          </button>
+          </Button>
         </VStack>
       </Form>
     </Formik>

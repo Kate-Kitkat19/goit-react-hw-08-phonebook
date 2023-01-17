@@ -9,7 +9,12 @@ import {
   Button,
   Container,
   FormLabel,
+  InputRightAddon,
+  IconButton,
+  InputGroup,
 } from '@chakra-ui/react';
+import { useState } from 'react';
+import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -26,9 +31,12 @@ const LoginForm = () => {
     form.reset();
   };
 
+  const [show, setShow] = useState(false);
+  const handleClick = () => setShow(!show);
+
   return (
     <Box marginTop={4}>
-      <Container>
+      <Container maxW="sm">
         <Card
           as="form"
           onSubmit={handleSubmit}
@@ -36,17 +44,28 @@ const LoginForm = () => {
           direction="column"
         >
           <CardBody>
-            <FormLabel marginTop={2}>Email</FormLabel>
-            <Input type="email" name="email" variant="flushed" size="md" />
-
-            <FormLabel marginTop={2}>
+            <FormLabel marginTop={4}>
+              Email
+              <Input type="email" name="email" variant="flushed" size="md" />
+            </FormLabel>
+            <FormLabel marginTop={4}>
               Password
-              <Input
-                type="password"
-                name="password"
-                variant="flushed"
-                size="md"
-              />
+              <InputGroup width="100%">
+                <Input
+                  type={show ? 'text' : 'password'}
+                  name="password"
+                  variant="flushed"
+                  size="md"
+                />
+                <InputRightAddon>
+                  <IconButton
+                    aria-label="Toggle password visibility"
+                    icon={show ? <ViewIcon /> : <ViewOffIcon />}
+                    onClick={handleClick}
+                    _hover="none"
+                  ></IconButton>
+                </InputRightAddon>
+              </InputGroup>
             </FormLabel>
             <Center w="100%" py="3">
               <Button type="submit">Log In</Button>
