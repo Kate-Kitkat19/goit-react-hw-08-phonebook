@@ -5,7 +5,6 @@ import { ValidationSchema } from './Validation';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/contacts/selectors';
 import { addContact } from 'redux/contacts/operations';
-import { toast } from 'react-toastify';
 import { Icon } from '@chakra-ui/react';
 import { Alert } from '@chakra-ui/react';
 
