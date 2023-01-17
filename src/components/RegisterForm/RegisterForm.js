@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
-import { Card, Center, CardBody, CardFooter } from '@chakra-ui/react';
+import { Card, Center, CardBody } from '@chakra-ui/react';
 import {
   useToast,
   Box,
