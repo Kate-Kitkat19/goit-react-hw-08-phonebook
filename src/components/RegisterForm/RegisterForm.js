@@ -1,7 +1,9 @@
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
-import { Card, Center, CardBody } from '@chakra-ui/react';
 import {
+  Card,
+  Center,
+  CardBody,
   useToast,
   Box,
   Input,
@@ -51,15 +53,15 @@ const RegisterForm = () => {
           direction="column"
         >
           <CardBody>
-            <FormLabel>
+            <FormLabel marginTop={2}>
               Username
               <Input type="text" name="name" variant="flushed" size="md" />
             </FormLabel>
-            <FormLabel>
+            <FormLabel marginTop={2}>
               Email
               <Input type="email" name="email" variant="flushed" size="md" />
             </FormLabel>
-            <FormLabel>
+            <FormLabel marginTop={2}>
               Password
               <Input
                 type="password"
