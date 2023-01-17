@@ -1,13 +1,13 @@
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
-
+import { Card, Center, CardBody, CardFooter } from '@chakra-ui/react';
 import {
   useToast,
   Box,
-  Flex,
   Input,
   Button,
   Container,
+  FormLabel,
 } from '@chakra-ui/react';
 
 const RegisterForm = () => {
@@ -42,34 +42,37 @@ const RegisterForm = () => {
   };
 
   return (
-    <Box>
+    <Box marginTop={4}>
       <Container>
-        <Flex
+        <Card
           as="form"
           onSubmit={handleSubmit}
           autoComplete="off"
-          
           direction="column"
         >
-          <label>
-            Username
-            <Input type="text" name="name" variant="flushed" size="md" />
-          </label>
-          <label>
-            Email
-            <Input type="email" name="email" variant="flushed" size="md" />
-          </label>
-          <label>
-            Password
-            <Input
-              type="password"
-              name="password"
-              variant="flushed"
-              size="md"
-            />
-          </label>
-          <Button type="submit">Register</Button>
-        </Flex>
+          <CardBody>
+            <FormLabel>
+              Username
+              <Input type="text" name="name" variant="flushed" size="md" />
+            </FormLabel>
+            <FormLabel>
+              Email
+              <Input type="email" name="email" variant="flushed" size="md" />
+            </FormLabel>
+            <FormLabel>
+              Password
+              <Input
+                type="password"
+                name="password"
+                variant="flushed"
+                size="md"
+              />
+            </FormLabel>
+            <Center w="100%" py="3">
+              <Button type="submit">Register</Button>
+            </Center>
+          </CardBody>
+        </Card>
       </Container>
     </Box>
   );
