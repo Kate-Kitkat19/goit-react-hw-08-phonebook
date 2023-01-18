@@ -1,7 +1,11 @@
+import { Alert } from '@chakra-ui/react';
+import { AlertIcon } from '@chakra-ui/react';
+
 export const NotFound = () => {
   return (
-    <>
-      <h2> Sorry, we couldn`t find this path :( </h2>
-    </>
+    <Alert status="error">
+      <AlertIcon />
+      Sorry, we couldn`t find this path :(
+    </Alert>
   );
 };

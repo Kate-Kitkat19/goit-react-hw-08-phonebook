@@ -1,4 +1,3 @@
-
 import { useDispatch } from 'react-redux';
 import { updateFilter } from 'redux/filter/filtersSlice';
 import { Input } from '@chakra-ui/react';
@@ -13,11 +12,12 @@ export const Filter = () => {
 
   return (
     <Input
+      marginTop={4}
       variant="outline"
       placeholder="Find contact by name"
       type="text"
       name="filter"
-      width='auto'
+      width="auto"
       onChange={handleUpdate}
     />
   );

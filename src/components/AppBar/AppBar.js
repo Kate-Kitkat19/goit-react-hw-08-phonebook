@@ -21,7 +21,7 @@ export const AppBar = () => {
       bg={colorMode === 'light' ? 'blue.100' : 'blue.700'}
     >
       <Container maxW="100vw">
-        <Flex justifyContent="space-between" align-items="center">
+        <Flex justifyContent="flex-end" align-items="center">
           {isLoggedIn ? <UserMenu /> : <AuthNav />}
           <IconButton
             onClick={toggleColorMode}

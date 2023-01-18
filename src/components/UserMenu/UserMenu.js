@@ -8,7 +8,7 @@ export const UserMenu = () => {
   const { user } = useAuth();
 
   return (
-    <HStack>
+    <HStack marginRight={4}>
       <Text fontSize="xl">Welcome, {user.name}</Text>
       <Button type="button" onClick={() => dispatch(logOut())}>
         Logout

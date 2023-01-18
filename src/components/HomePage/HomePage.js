@@ -10,7 +10,7 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchContacts } from 'redux/contacts/operations';
-
+import { Heading } from '@chakra-ui/react';
 const HomePage = () => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
@@ -25,7 +25,7 @@ const HomePage = () => {
     <>
       <ContactForm></ContactForm>
       <Filter></Filter>
-      {contactList.length > 0 && <h2>Contacts</h2>}
+      {contactList.length > 0 && <Heading>Contacts</Heading>}
       {isLoading && !error && <b>Loading...</b>}
       <Contacts></Contacts>
     </>

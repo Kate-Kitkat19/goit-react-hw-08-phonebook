@@ -2,6 +2,7 @@ import { ContactCard } from '../ContactCard/ContactCard';
 import { selectFilter } from 'redux/filter/selectors';
 import { selectContacts } from 'redux/contacts/selectors';
 import { useSelector } from 'react-redux';
+import { Container, VStack, Card } from '@chakra-ui/react';
 
 export const Contacts = () => {
   const contactList = useSelector(selectContacts);
@@ -14,14 +15,14 @@ export const Contacts = () => {
     : contactList;
 
   return (
-    <ul>
+    <Container marginTop={4} centerContent maxW="xl" as="ul">
       {visibleContacts.map(({ name, number, id }) => {
         return (
-          <li key={id}>
+          <VStack width="full" as="li" key={id}>
             <ContactCard name={name} number={number} id={id} />
-          </li>
+          </VStack>
         );
       })}
-    </ul>
+    </Container>
   );
 };
