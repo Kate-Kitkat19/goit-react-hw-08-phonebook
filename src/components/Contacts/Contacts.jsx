@@ -2,7 +2,7 @@ import { ContactCard } from '../ContactCard/ContactCard';
 import { selectFilter } from 'redux/filter/selectors';
 import { selectContacts } from 'redux/contacts/selectors';
 import { useSelector } from 'react-redux';
-import { Container, VStack, Card } from '@chakra-ui/react';
+import { Container, VStack } from '@chakra-ui/react';
 
 export const Contacts = () => {
   const contactList = useSelector(selectContacts);
