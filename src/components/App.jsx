@@ -23,7 +23,7 @@ export const App = () => {
   }, [dispatch]);
 
   const { isLoggedIn } = useAuth();
-  console.log(isLoggedIn);
+ 
 
   return (
     !isRefreshing && (

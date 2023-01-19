@@ -28,6 +28,7 @@ const LoginForm = () => {
         password: form.elements.password.value,
       })
     );
+
     form.reset();
   };
 
@@ -62,13 +63,14 @@ const LoginForm = () => {
                     aria-label="Toggle password visibility"
                     icon={show ? <ViewIcon /> : <ViewOffIcon />}
                     onClick={handleClick}
-                    _hover="none"
                   ></IconButton>
                 </InputRightAddon>
               </InputGroup>
             </FormLabel>
             <Center w="100%" py="3">
-              <Button type="submit">Log In</Button>
+              <Button type="submit" colorScheme="green">
+                Log In
+              </Button>
             </Center>
           </CardBody>
         </Card>

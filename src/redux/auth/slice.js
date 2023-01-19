@@ -6,6 +6,7 @@ const initialState = {
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
+  error: null,
 };
 
 const authSlice = createSlice({
@@ -16,16 +17,28 @@ const authSlice = createSlice({
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
+      state.error = null;
+    },
+    [register.rejected](state, action) {
+      state.error = action.payload;
+    },
+    [logIn.rejected](state, action) {
+      state.error = action.payload;
     },
     [logIn.fulfilled](state, action) {
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
+      state.error = null;
     },
     [logOut.fulfilled](state) {
       state.user = { name: null, email: null };
       state.token = null;
       state.isLoggedIn = false;
+      state.error = null;
+    },
+    [logOut.rejected](state, action) {
+      state.error = action.payload;
     },
     [refreshUser.pending](state) {
       state.isRefreshing = true;

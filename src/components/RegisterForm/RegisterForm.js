@@ -15,11 +15,15 @@ import {
   InputGroup,
 } from '@chakra-ui/react';
 import { useState } from 'react';
+// import { useSelector } from 'react-redux';
+
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
+// import { selectError } from 'redux/auth/selectors';
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
   const toast = useToast();
+  // const error = useSelector(selectError);
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
 
@@ -82,13 +86,14 @@ const RegisterForm = () => {
                     aria-label="Toggle password visibility"
                     icon={show ? <ViewIcon /> : <ViewOffIcon />}
                     onClick={handleClick}
-                    _hover="none"
                   ></IconButton>
                 </InputRightAddon>
               </InputGroup>
             </FormLabel>
             <Center w="100%" py="3">
-              <Button type="submit">Register</Button>
+              <Button type="submit" colorScheme="green">
+                Register
+              </Button>
             </Center>
           </CardBody>
         </Card>
