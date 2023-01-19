@@ -22,8 +22,13 @@ export const ContactCard = ({ name, number, id }) => {
       justifyContent="space-between"
       marginBottom={2}
     >
-      <Text>{name}</Text>
-      <Text>{number}</Text>
+      <Text fontSize="lg" fontFamily="'Crimson Text', serif;">
+        {name}
+      </Text>
+      <Text fontSize="lg" fontFamily="'Crimson Text', serif;">
+        {number}
+      </Text>
+
       <Spacer></Spacer>
       <IconButton
         isLoading={isLoading}

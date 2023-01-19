@@ -2,11 +2,7 @@ import ContactForm from 'components/ContactForm/ContactForm';
 import { Contacts } from 'components/Contacts/Contacts';
 import { Filter } from 'components/Filter/Filter';
 
-import {
-  selectError,
-  selectIsLoading,
-  selectContacts,
-} from 'redux/contacts/selectors';
+import { selectContacts } from 'redux/contacts/selectors';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchContacts } from 'redux/contacts/operations';
@@ -26,7 +22,11 @@ const HomePage = () => {
       <ContactForm></ContactForm>
       <Filter></Filter>
       {contactList.length > 0 && (
-        <Heading marginTop={4} fontWeight="bold">
+        <Heading
+          marginTop={4}
+          fontWeight="bold"
+          fontFamily="'Crimson Text', serif"
+        >
           Contacts
         </Heading>
       )}

@@ -14,7 +14,9 @@ export const UserMenu = () => {
 
   return (
     <HStack>
-      <Text fontSize="xl">Welcome, {user.name}</Text>
+      <Text fontSize="xl" fontFamily="'Open Sans', sans-serif">
+        Welcome, {user.name}
+      </Text>
       <Button
         type="button"
         onClick={() => dispatch(logOut()).unwrap().then(navigate('/'))}
