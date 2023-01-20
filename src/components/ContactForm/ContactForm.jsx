@@ -14,7 +14,7 @@ import {
   Input,
   VStack,
   InputGroup,
-  useToast
+  useToast,
 } from '@chakra-ui/react';
 
 import { PhoneIcon } from '@chakra-ui/icons';
@@ -23,7 +23,7 @@ import { ImUser } from 'react-icons/im';
 export const ContactForm = () => {
   const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
-const toast = useToast();
+  const toast = useToast();
 
   return (
     <Container marginBottom={4} centerContent maxW="sm">
@@ -67,6 +67,8 @@ const toast = useToast();
                     name="name"
                     placeholder="Name"
                     width="full"
+                    borderColor="teal.100"
+                    errorBorderColor="red.400"
                   ></Field>
                 </InputGroup>
                 <FormErrorMessage>{errors.name}</FormErrorMessage>
@@ -83,6 +85,8 @@ const toast = useToast();
                     name="number"
                     placeholder="Phone number"
                     width="full"
+                    borderColor="teal.200"
+                    errorBorderColor="red.400"
                   ></Field>
                 </InputGroup>
                 <FormErrorMessage>{errors.number}</FormErrorMessage>

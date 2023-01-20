@@ -1,7 +1,11 @@
 import { createGlobalStyle } from 'styled-components';
+
 import 'modern-normalize'; /* bring in normalize.css styles */
 
 export const GlobalStyle = createGlobalStyle`
+:root { 
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -9,7 +13,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
- background-color: #fbfef9;
+  background-color: #fbfef9;
+  
 }
 
 code {

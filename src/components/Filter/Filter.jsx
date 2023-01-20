@@ -13,12 +13,12 @@ export const Filter = () => {
   return (
     <Input
       marginTop={4}
-      variant="outline"
       placeholder="Find contact by name"
       type="text"
       name="filter"
       width="auto"
       onChange={handleUpdate}
+      borderColor="teal.100"
     />
   );
 };

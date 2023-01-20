@@ -24,7 +24,6 @@ export const AppBar = () => {
         <Flex justifyContent="flex-end" align-items="center">
           {isLoggedIn ? <UserMenu /> : <AuthNav />}
           <IconButton
-            
             marginLeft={4}
             onClick={toggleColorMode}
             aria-label="Toggle dark and light mode"

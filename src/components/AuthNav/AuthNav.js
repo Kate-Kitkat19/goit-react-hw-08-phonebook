@@ -1,32 +1,18 @@
 import { NavLink } from 'react-router-dom';
-import { HStack, Button, useColorMode } from '@chakra-ui/react';
+import { HStack, Button, useColorModeValue } from '@chakra-ui/react';
 
 export const AuthNav = () => {
-  const { colorMode } = useColorMode();
-
-  const buttonColors = {
-    darkMode: { bg: 'green.200', color: 'gray.800' },
-    lightMode: { bg: 'green.500', color: 'white' },
-  };
+  const buttonColors = useColorModeValue(
+    "bg: 'green.200', color: 'gray.800' ",
+    "bg: 'green.500', color: 'white'"
+  );
 
   return (
     <HStack spacing={4}>
-      <Button
-        as={NavLink}
-        to="/register"
-        _activeLink={
-          colorMode === 'light' ? buttonColors.lightMode : buttonColors.darkMode
-        }
-      >
+      <Button as={NavLink} to="/register" _activeLink={buttonColors}>
         Register
       </Button>
-      <Button
-        as={NavLink}
-        to="/login"
-        _activeLink={
-          colorMode === 'light' ? buttonColors.lightMode : buttonColors.darkMode
-        }
-      >
+      <Button as={NavLink} to="/login" _activeLink={buttonColors}>
         Log In
       </Button>
     </HStack>
