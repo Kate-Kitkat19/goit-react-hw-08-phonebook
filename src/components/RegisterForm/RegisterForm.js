@@ -15,15 +15,15 @@ import {
   InputGroup,
 } from '@chakra-ui/react';
 import { useState } from 'react';
-// import { useSelector } from 'react-redux';
-
+import { useSelector } from 'react-redux';
+import { ErrorComponent } from 'components/ErrorNotification/ErrorNotification';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
-// import { selectError } from 'redux/auth/selectors';
+import { selectAuthError } from 'redux/auth/selectors';
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
   const toast = useToast();
-  // const error = useSelector(selectError);
+  const error = useSelector(selectAuthError);
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
 
@@ -50,13 +50,14 @@ const RegisterForm = () => {
         isClosable: true,
       });
     }
-    dispatch(register({ name, email, password }));
+    dispatch(register({ name, email, password })).unwrap().then(console.log);
     form.reset();
   };
 
   return (
     <Box marginTop={4}>
       <Container>
+        {error && <ErrorComponent action="registration"></ErrorComponent>}
         <Card
           as="form"
           onSubmit={handleSubmit}

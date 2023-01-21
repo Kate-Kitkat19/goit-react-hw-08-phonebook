@@ -9,8 +9,8 @@ export const ErrorComponent = ({ action }) => {
   return (
     <Alert status="error">
       <AlertIcon />
-      <AlertTitle>`Sorry, {action} failed`</AlertTitle>
-      <AlertDescription>Please try again later</AlertDescription>
+      <AlertTitle>Sorry, {action} failed</AlertTitle>
+      <AlertDescription>Please try again</AlertDescription>
     </Alert>
   );
 };

@@ -66,8 +66,8 @@ export const ContactForm = () => {
                     type="text"
                     name="name"
                     placeholder="Name"
-                    width="full"
-                    borderColor="teal.100"
+                    width="sm"
+                    borderColor="gray.300"
                     errorBorderColor="red.400"
                   ></Field>
                 </InputGroup>
@@ -84,18 +84,18 @@ export const ContactForm = () => {
                     type="tel"
                     name="number"
                     placeholder="Phone number"
-                    width="full"
-                    borderColor="teal.200"
+                    width="sm"
+                    borderColor="gray.300"
                     errorBorderColor="red.400"
                   ></Field>
                 </InputGroup>
-                <FormErrorMessage>{errors.number}</FormErrorMessage>
+                <FormErrorMessage maxW="sm">{errors.number}</FormErrorMessage>
               </FormControl>
               <Button
                 type="submit"
                 aria-label="Add contact"
                 colorScheme="green"
-                width="full"
+                width="50%"
               >
                 Add contact
               </Button>

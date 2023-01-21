@@ -18,7 +18,7 @@ export const Filter = () => {
       name="filter"
       width="auto"
       onChange={handleUpdate}
-      borderColor="teal.100"
+      borderColor="gray.300"
     />
   );
 };

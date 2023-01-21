@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
 import {
   Card,
@@ -12,13 +12,18 @@ import {
   InputRightAddon,
   IconButton,
   InputGroup,
+  useColorModeValue,
 } from '@chakra-ui/react';
 import { useState } from 'react';
+import { selectAuthError } from 'redux/auth/selectors';
+import { ErrorComponent } from 'components/ErrorNotification/ErrorNotification';
+
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
-
+  const error = useSelector(selectAuthError);
+  const iconColor = useColorModeValue('gray.100', 'whiteAlpha-300');
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.currentTarget;
@@ -38,6 +43,7 @@ const LoginForm = () => {
   return (
     <Box marginTop={4}>
       <Container maxW="sm">
+        {error && <ErrorComponent action="login"></ErrorComponent>}
         <Card
           as="form"
           onSubmit={handleSubmit}
@@ -63,6 +69,8 @@ const LoginForm = () => {
                     aria-label="Toggle password visibility"
                     icon={show ? <ViewIcon /> : <ViewOffIcon />}
                     onClick={handleClick}
+                    background={iconColor}
+                    _hover={{ background: iconColor }}
                   ></IconButton>
                 </InputRightAddon>
               </InputGroup>

@@ -11,14 +11,18 @@ export const Layout = () => {
   );
 
   return (
-    <Box
-      bgImage={bcgImage}
-      bgRepeat="repeat-y"
-      w="100vw"
-      h="100vh"
-      backgroundSize="cover"
-      position="fixed"
-    >
+    <>
+      <Box
+        bgImage={bcgImage}
+        bgRepeat="repeat-y"
+        w="100vw"
+        h="100vh"
+        backgroundSize="cover"
+        position="fixed"
+        zIndex="-1"
+      >
+        {' '}
+      </Box>
       <AppBar />
 
       <Suspense fallback={null}>
@@ -26,6 +30,6 @@ export const Layout = () => {
           <Outlet />
         </Container>
       </Suspense>
-    </Box>
+    </>
   );
 };
