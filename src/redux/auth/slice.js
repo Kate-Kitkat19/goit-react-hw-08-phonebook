@@ -20,8 +20,13 @@ const authSlice = createSlice({
       state.error = null;
     },
     [register.rejected](state, action) {
-      console.log('register.rejected action', action);
       state.error = action.payload;
+    },
+    [register.pending](state, _) {
+      state.error = null;
+    },
+    [logIn.pending](state, _) {
+      state.error = null;
     },
     [logIn.rejected](state, action) {
       state.error = action.payload;

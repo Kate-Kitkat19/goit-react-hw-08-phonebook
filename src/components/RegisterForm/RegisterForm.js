@@ -13,6 +13,7 @@ import {
   InputRightAddon,
   IconButton,
   InputGroup,
+  useColorModeValue,
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -26,6 +27,7 @@ const RegisterForm = () => {
   const error = useSelector(selectAuthError);
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
+  const iconColor = useColorModeValue('gray.100', 'whiteAlpha-300');
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -50,7 +52,7 @@ const RegisterForm = () => {
         isClosable: true,
       });
     }
-    dispatch(register({ name, email, password })).unwrap().then(console.log);
+    dispatch(register({ name, email, password }));
     form.reset();
   };
 
@@ -87,6 +89,8 @@ const RegisterForm = () => {
                     aria-label="Toggle password visibility"
                     icon={show ? <ViewIcon /> : <ViewOffIcon />}
                     onClick={handleClick}
+                    background={iconColor}
+                    _hover={{ background: iconColor }}
                   ></IconButton>
                 </InputRightAddon>
               </InputGroup>
