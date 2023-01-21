@@ -94,6 +94,7 @@ const RegisterForm = () => {
                   ></IconButton>
                 </InputRightAddon>
               </InputGroup>
+              
             </FormLabel>
             <Center w="100%" py="3">
               <Button type="submit" colorScheme="green">

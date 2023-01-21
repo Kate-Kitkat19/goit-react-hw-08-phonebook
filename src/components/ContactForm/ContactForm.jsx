@@ -66,7 +66,7 @@ export const ContactForm = () => {
                     type="text"
                     name="name"
                     placeholder="Name"
-                    width="sm"
+                    width="full"
                     borderColor="gray.300"
                     errorBorderColor="red.400"
                   ></Field>
@@ -84,7 +84,7 @@ export const ContactForm = () => {
                     type="tel"
                     name="number"
                     placeholder="Phone number"
-                    width="sm"
+                    width="full"
                     borderColor="gray.300"
                     errorBorderColor="red.400"
                   ></Field>
