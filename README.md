@@ -6,9 +6,9 @@ This app will keep all your contacts in one place, so you could easily access th
 
 ## Screenshots
 
-![App Screenshot](https://snipboard.io/D5cKBg.jpg)
-![App Screenshot](https://snipboard.io/qAgWpk.jpg)
-![App Screenshot](https://snipboard.io/0UuK9P.jpg)
+![App Screenshot](https://snipboard.io/EAFzRf.jpg)
+![App Screenshot](https://snipboard.io/X9NUbA.jpg)
+![App Screenshot](https://snipboard.io/jbimd0.jpg)
 
 
 
